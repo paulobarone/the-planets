@@ -1,9 +1,12 @@
-import { Circle, Header, LeftSide, LinkName, Logo, NavItem, NavLinks, NavOptions, StyledChevronRightIcon, StyledMenuIcon, StyledMenuOpenIcon } from './NavBar.style'
-import { useEffect, useState } from 'react'
+import { Circle, Header, LeftSide, Logo, NavItem, NavLinks, NavOptions, StyledChevronRightIcon, StyledMenuIcon, StyledMenuOpenIcon } from './NavBar.style'
+import { useContext, useEffect, useState } from 'react'
 import { planets } from '../../data/planets'
+import PlanetContext from '../../contexts/PlanetContext'
 
 export default function NavBar() {
+  const { planet, setPlanet } = useContext(PlanetContext)
   const [menu, setMenu] = useState(false)
+  const windowWidth = window.innerWidth
 
   const handleMenu = () => {
     setMenu(!menu)
@@ -18,6 +21,13 @@ export default function NavBar() {
     }
   }, [menu])
 
+  const handleCurrentPlanet = (index: number) => {
+    setPlanet(planets[index])
+    setTimeout(() => {
+      setMenu(false)
+    }, 700)
+  }
+
   return (
     <Header $menu={menu}>
       <NavOptions>
@@ -27,13 +37,17 @@ export default function NavBar() {
         }
       </NavOptions>
       <NavLinks $menu={menu}>
-        {planets.map((item, index) => (
-          <NavItem href={item.path} key={index}>
+        {windowWidth < 1024 ? planets.map((item, index) => (
+          <NavItem $active={planet.path === item.path} key={index} $color={item.sectionColor} onClick={() => handleCurrentPlanet(index)}>
             <LeftSide>
               <Circle $color={item.sectionColor} />
-              <LinkName>{item.name}</LinkName>
+              {item.name}
             </LeftSide>
             <StyledChevronRightIcon />
+          </NavItem>
+        )) : planets.map((item, index) => (
+          <NavItem $active={planet.path === item.path} $color={item.sectionColor} key={index} onClick={() => handleCurrentPlanet(index)}>
+            {item.name}
           </NavItem>
         ))}
       </NavLinks>

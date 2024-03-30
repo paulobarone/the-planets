@@ -4,17 +4,26 @@ import { theme } from './styles/theme'
 import NavBar from './components/NavBar/NavBar'
 import { GlobalStyles } from './styles/GlobalStyles'
 import Background from './components/Background/Background'
+import Planet from './components/Planet/Planet'
+import PlanetContext from './contexts/PlanetContext'
+import { planets } from './data/planets'
+import { useState } from 'react'
 
 function App() {
+  const [planet, setPlanet] = useState(planets[0])
+
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Background>
-          <NavBar />
-        </Background>
-      </ThemeProvider>
-    </BrowserRouter>
+    <PlanetContext.Provider value={{ planet, setPlanet }}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Background>
+            <NavBar />
+            <Planet />
+          </Background>
+        </ThemeProvider>
+      </BrowserRouter>
+    </PlanetContext.Provider>
   )
 }
 
