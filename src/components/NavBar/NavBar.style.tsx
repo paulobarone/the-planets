@@ -54,6 +54,8 @@ export const NavItem = styled.a`
   text-decoration: none;
   list-style: none;
   color: ${theme.colors.white};
+  border-bottom: 1px solid ${theme.colors.grayDark};
+  padding: 12px 16px;
 
   display: flex;
   justify-content: space-between;
