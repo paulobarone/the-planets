@@ -20,28 +20,32 @@ interface SectionColorProps {
 
 export const Header = styled.header<MenuProps>`
   display: flex;
+  justify-content: center;
+  border-bottom: ${(props) => !props.$menu ? `1px solid ${theme.colors.grayDark}` : 'none'};
+  width: 100%;
+`
+
+export const Nav = styled.nav<MenuProps>`
+  display: flex;
   flex-direction: column;
   gap: 48px;
   padding: 16px;
   height: ${(props) => props.$menu ? '100vh' : 'auto'};
-  border-bottom: ${(props) => !props.$menu ? `1px solid ${theme.colors.grayDark}` : 'none'};
+  width: 100%;
+  max-width: 1200px;
 
   @media screen and (min-width: 768px) {
+    align-items: center;
     padding: 32px 32px;
   }
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: normal;
     min-height: 75px;
     padding: 0px 32px;
   }
-`
-
-export const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `
 
 export const NavOptions = styled.div`
@@ -63,7 +67,7 @@ export const NavLinks = styled.ul<MenuProps>`
   flex-direction: column;
   gap: 24px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
   }
@@ -87,10 +91,14 @@ export const NavItem = styled.a<NavItemProps>`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (min-width: 1024px) {
-    position: relative;
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
     border-bottom: none;
     padding: 0px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
     font-size: 14px;
     transition: 0.7s color;
 
@@ -133,7 +141,7 @@ export const StyledMenuIcon = styledMui(MenuIcon)`
   font-size: 32px;
   cursor: pointer;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `
@@ -142,7 +150,7 @@ export const StyledMenuOpenIcon = styledMui(MenuOpenIcon)`
   font-size: 32px;
   cursor: pointer;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `
