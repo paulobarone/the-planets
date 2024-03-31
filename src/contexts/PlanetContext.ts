@@ -1,5 +1,10 @@
 import { createContext } from 'react'
+import { PlanetContextValue } from '../types/planetTypes'
+import { planets } from '../data/planets'
 
-const PlanetContext = createContext({})
+export const PlanetContext = createContext<PlanetContextValue>({ 
+  planet: planets[0], 
+  setPlanet: () => {} 
+})
 
 export default PlanetContext

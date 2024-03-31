@@ -1,5 +1,13 @@
+import { Dispatch, SetStateAction } from 'react'
+
+export interface PlanetContextValue {
+  planet: PlanetTypes;
+  setPlanet: Dispatch<SetStateAction<PlanetTypes>>;
+}
+
 export interface PlanetTypes {
   name: string;
+  path: string;
   sectionColor: string;
   overview: PlanetSection;
   structure: PlanetSection;
