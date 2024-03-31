@@ -14,12 +14,20 @@ export const InfoItemContainer = styled.div`
     align-items: start;
     justify-content: start;
   }
+
+  @media screen and (min-width: 1024px) {
+    padding: 24px;
+  }
 `
 
 export const InfoName = styled.h2`
   color: ${theme.colors.grayLight};
   font-size: 8px;
   text-transform: uppercase;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 12px;
+  }
 `
 
 export const InfoValue = styled.span`
@@ -30,5 +38,9 @@ export const InfoValue = styled.span`
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 32px;
   }
 `

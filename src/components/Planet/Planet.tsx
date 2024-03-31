@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { DesktopOption, DesktopOptions, InfosContainer, MobileOption, MobileOptions, NumberOption, OptionsMobileContainer, PlanetContainer, PlanetDescription, PlanetGeoImage, PlanetImage, PlanetImageContainer, PlanetName, PlanetResume, PlanetResumeContainer, PlanetResumeTextContainer, Source, StyledArrowForwardIosRoundedIcon, WikipediaLink } from './Planet.style'
 import InfoItem from '../InfoItem/InfoItem'
 import PlanetContext from '../../contexts/PlanetContext'
@@ -12,6 +12,10 @@ type ImageMapOption = {
 export default function Planet() {
   const [currentOption, setCurrentOption] = useState<CurrentOptionProps>('overview')
   const { planet } = useContext(PlanetContext)
+
+  useEffect(() => {
+    setCurrentOption('overview')
+  }, [planet])
 
   const imageMap: Record<CurrentOptionProps, ImageMapOption> = {
     'overview': { image: planet.overview.image },

@@ -16,6 +16,15 @@ export const PlanetContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 48px;
+  }
 `
 
 export const OptionsMobileContainer = styled.div`
@@ -39,7 +48,7 @@ export const MobileOptions = styled.div`
   max-width: 500px;
 
   @media screen and (min-width: 768px) {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 `
 
@@ -86,7 +95,13 @@ export const PlanetResumeContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 32px;
-    max-width: 1100px;
+    max-width: 1200px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 `
 
@@ -95,11 +110,20 @@ export const PlanetImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+
+  @media screen and (min-width: 1024px) {
+    width: 400px;
+  }
 `
 
 export const PlanetImage = styled.img`
   width: 60%;
   max-width: 300px;
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    max-width: 500px;
+  }
 `
 
 export const PlanetGeoImage = styled.img`
@@ -109,6 +133,11 @@ export const PlanetGeoImage = styled.img`
   transform: translateX(-50%);
   width: 30%;
   max-width: 150px;
+
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+    max-width: 250px;
+  }
 `
 
 export const PlanetDescription = styled.p`
@@ -130,8 +159,13 @@ export const PlanetResume = styled.div`
   gap: 16px;
 
   @media screen and (min-width: 768px) {
-    display: flex;
     flex-direction: row;
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: column;
+    max-width: 50%;
+    gap: 32px;
   }
 `
 
@@ -143,6 +177,11 @@ export const PlanetResumeTextContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 50%;
+    align-items: start;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: none;
     align-items: start;
   }
 `
@@ -180,18 +219,17 @@ export const InfosContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 0px 16px 32px 16px;
   max-width: 500px;
   width: 100%;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 16px;
-    padding: 32px;
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 `
 
