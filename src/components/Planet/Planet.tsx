@@ -49,7 +49,7 @@ export default function Planet() {
         </PlanetImageContainer>
         <PlanetResume>
           <PlanetResumeTextContainer>
-            <PlanetName>Mercury</PlanetName>
+            <PlanetName>{planet.name}</PlanetName>
             <PlanetDescription>
               {descriptionMap[currentOption]}
             </PlanetDescription>
