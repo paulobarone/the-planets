@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { styled as styledMui } from '@mui/system'
 import { theme } from '../../styles/theme'
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
@@ -11,6 +11,20 @@ interface OptionProps {
 interface NumberOptionProps {
   $active: boolean
 }
+
+const float = keyframes`
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(3%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+`
 
 export const PlanetContainer = styled.div`
   display: flex;
@@ -119,6 +133,7 @@ export const PlanetImageContainer = styled.div`
 export const PlanetImage = styled.img`
   width: 60%;
   max-width: 300px;
+  animation: ${float} 5s infinite ease;
 
   @media screen and (min-width: 1024px) {
     width: 100%;
@@ -133,10 +148,20 @@ export const PlanetGeoImage = styled.img`
   transform: translateX(-50%);
   width: 30%;
   max-width: 150px;
+  transition: 0.7s;
+  cursor: pointer;
+
+  &:hover {
+    width: 175px;
+  }
 
   @media screen and (min-width: 1024px) {
     width: 50%;
     max-width: 250px;
+
+    &:hover {
+      width: 275px;
+    }
   }
 `
 
@@ -212,6 +237,11 @@ export const WikipediaLink = styled.a`
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  transition: .7s;
+
+  &:hover {
+    color: ${theme.colors.white};
+  }
 `
 
 export const InfosContainer = styled.div`
@@ -260,6 +290,7 @@ export const DesktopOption = styled.div<OptionProps>`
   border: 1px solid ${theme.colors.grayDark};
   cursor: pointer;
   background-color: ${(props) => props.$active ? props.$color : 'transparent'};
+  transition: .7s ease;
 `
 
 export const StyledArrowForwardIosRoundedIcon = styledMui(ArrowForwardIosRoundedIcon)`
