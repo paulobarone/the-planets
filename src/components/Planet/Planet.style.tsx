@@ -102,6 +102,15 @@ export const PlanetImage = styled.img`
   max-width: 300px;
 `
 
+export const PlanetGeoImage = styled.img`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  max-width: 150px;
+`
+
 export const PlanetDescription = styled.p`
   font-size: 12px;
   text-align: center;
@@ -131,9 +140,9 @@ export const PlanetResumeTextContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  max-width: 50%;
 
   @media screen and (min-width: 768px) {
+    max-width: 50%;
     align-items: start;
   }
 `

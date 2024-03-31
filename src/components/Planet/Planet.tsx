@@ -1,18 +1,22 @@
 import { useContext, useState } from 'react'
-import { DesktopOption, DesktopOptions, InfosContainer, MobileOption, MobileOptions, NumberOption, OptionsMobileContainer, PlanetContainer, PlanetDescription, PlanetImage, PlanetImageContainer, PlanetName, PlanetResume, PlanetResumeContainer, PlanetResumeTextContainer, Source, StyledArrowForwardIosRoundedIcon, WikipediaLink } from './Planet.style'
+import { DesktopOption, DesktopOptions, InfosContainer, MobileOption, MobileOptions, NumberOption, OptionsMobileContainer, PlanetContainer, PlanetDescription, PlanetGeoImage, PlanetImage, PlanetImageContainer, PlanetName, PlanetResume, PlanetResumeContainer, PlanetResumeTextContainer, Source, StyledArrowForwardIosRoundedIcon, WikipediaLink } from './Planet.style'
 import InfoItem from '../InfoItem/InfoItem'
 import PlanetContext from '../../contexts/PlanetContext'
 
 type CurrentOptionProps = 'overview' | 'structure' | 'surface'
+type ImageMapOption = {
+  image: string;
+  geo?: string;
+}
 
 export default function Planet() {
   const [currentOption, setCurrentOption] = useState<CurrentOptionProps>('overview')
   const { planet } = useContext(PlanetContext)
 
-  const imageMap: Record<CurrentOptionProps, string> = {
-    'overview': planet.overview.image,
-    'structure': planet.structure.image,
-    'surface': planet.surface.image
+  const imageMap: Record<CurrentOptionProps, ImageMapOption> = {
+    'overview': { image: planet.overview.image },
+    'structure': { image: planet.structure.image },
+    'surface': { image: planet.surface.image, geo: planet.surface.geo }
   }
 
   const sourceMap: Record<CurrentOptionProps, string> = {
@@ -38,7 +42,10 @@ export default function Planet() {
       </OptionsMobileContainer>
       <PlanetResumeContainer>
         <PlanetImageContainer>
-          <PlanetImage src={imageMap[currentOption]} alt={planet.name} />
+        <PlanetImage src={imageMap[currentOption].image} alt={planet.name} />
+        {currentOption === 'surface' && imageMap[currentOption].geo && (
+          <PlanetGeoImage src={imageMap[currentOption].geo} alt={planet.name} />
+        )}
         </PlanetImageContainer>
         <PlanetResume>
           <PlanetResumeTextContainer>
