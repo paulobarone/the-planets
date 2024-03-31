@@ -42,10 +42,10 @@ export default function Planet() {
       </OptionsMobileContainer>
       <PlanetResumeContainer>
         <PlanetImageContainer>
-        <PlanetImage src={imageMap[currentOption].image} alt={planet.name} />
-        {currentOption === 'surface' && imageMap[currentOption].geo && (
-          <PlanetGeoImage src={imageMap[currentOption].geo} alt={planet.name} />
-        )}
+          <PlanetImage src={imageMap[currentOption].image} alt={planet.name} />
+          {currentOption === 'surface' && imageMap[currentOption].geo && (
+            <PlanetGeoImage src={imageMap[currentOption].geo} alt={planet.name} />
+          )}
         </PlanetImageContainer>
         <PlanetResume>
           <PlanetResumeTextContainer>
