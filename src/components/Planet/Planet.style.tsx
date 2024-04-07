@@ -264,10 +264,14 @@ export const InfosContainer = styled.div`
 `
 
 export const DesktopOptions = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 24px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `
 
 export const NumberOption = styled.span<NumberOptionProps>`
